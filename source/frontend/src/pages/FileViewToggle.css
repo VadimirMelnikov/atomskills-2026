@@ -1,0 +1,134 @@
+/* src/styles/FileViewToggle.css */
+
+/* === Контейнеры === */
+.files-grid {
+  display: grid;
+  gap: 16px;
+  padding: 8px;
+  transition: grid-template-columns 0.2s ease;
+}
+
+.files-table {
+  width: 100%;
+  border-collapse: collapse;
+  transition: font-size 0.2s ease;
+}
+
+/* === Размеры карточек === */
+.files-grid.size-small   { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+.files-grid.size-medium  { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); }
+.files-grid.size-large   { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+.files-grid.size-xlarge  { grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); }
+
+/* === Карточка файла === */
+.file-card {
+  height: var(--card-height, 180px);
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: #fff;
+}
+
+.file-card:hover {
+  border-color: #4a90d9;
+  box-shadow: 0 4px 12px rgba(74, 144, 217, 0.2);
+}
+
+/* === Размеры карточек через переменные === */
+.file-card.size-small   { --card-height: 140px; --icon-size: 32px; --name-size: 12px; }
+.file-card.size-medium  { --card-height: 180px; --icon-size: 48px; --name-size: 14px; }
+.file-card.size-large   { --card-height: 220px; --icon-size: 64px; --name-size: 14px; }
+.file-card.size-xlarge  { --card-height: 280px; --icon-size: 80px; --name-size: 16px; }
+
+.file-card .file-icon {
+  font-size: var(--icon-size, 48px);
+  margin-bottom: 8px;
+}
+
+.file-card .file-name {
+  text-align: center;
+  font-weight: 500;
+  font-size: var(--name-size, 14px);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+}
+
+.file-card .file-meta {
+  font-size: 11px;
+  color: #666;
+  margin-top: 4px;
+  text-align: center;
+}
+
+/* === Таблица === */
+.files-table th {
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  border-bottom: 2px solid #dee2e6;
+  text-align: left;
+  font-weight: 600;
+  color: #333;
+}
+
+.files-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #eee;
+  color: #666;
+}
+
+.files-table tr {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.files-table tr:hover {
+  background-color: #f0f7ff;
+}
+
+.files-table.size-small  { font-size: 12px; }
+.files-table.size-medium { font-size: 14px; }
+.files-table.size-large  { font-size: 16px; }
+
+/* === Панель управления === */
+.view-toggle-group {
+  display: flex;
+  gap: 4px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 2px;
+}
+
+.view-toggle-btn {
+  padding: 6px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #fff;
+  color: #333;
+  font-weight: 500;
+  font-size: 13px;
+  transition: all 0.2s;
+}
+
+.view-toggle-btn.active {
+  background-color: #4a90d9;
+  color: #fff;
+}
+
+/* === Анимации === */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.files-grid, .files-table-container {
+  animation: fadeIn 0.2s ease;
+}

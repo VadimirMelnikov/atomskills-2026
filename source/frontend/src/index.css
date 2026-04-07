@@ -1,0 +1,65 @@
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+	background: #1890ff; /* голубой фон сайта */
+	overscroll-behavior-y: contain;
+}
+
+body {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	overscroll-behavior: contain;
+}
+
+::selection {
+	background: rgba(24, 144, 255, 0.3);
+}
+
+::-webkit-scrollbar-track {
+	background: #1890ff;
+}
+
+#onlyoffice-editor iframe {
+	border-radius: 8px;
+	background: transparent !important;
+	overflow: hidden;
+}
+
+/* Main content card */
+.main-content-card {
+	max-width: 1280px;
+	width: calc(100% - 24px);
+	margin: 0 auto;
+	background: #ffffff;
+	border-radius: 14px;
+	box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 auto;
+}
+
+/* Компактный вариант для ВСЕХ antd Alert */
+.ant-alert {
+	padding: 8px 12px;
+}
+
+.ant-alert .ant-alert-message {
+	font-size: 13px;
+	margin: 0;
+	padding: 0;
+}
+
+.ant-alert .ant-alert-description {
+	font-size: 12px;
+	margin: 0;
+	padding: 0;
+}
+
+.ant-alert .ant-alert-icon {
+	font-size: 14px;
+	line-height: 1;
+	margin-top: 0;
+}

@@ -1,0 +1,13 @@
+workflow:
+  rules:
+    - if: '$CI_PIPELINE_SOURCE == "merge_request_event" && $CI_MERGE_REQUEST_TARGET_BRANCH_NAME == "main"'
+    - if: '$CI_COMMIT_BRANCH == "main"'
+
+stages:
+  - deploy
+
+deploy_app:
+  stage: deploy
+  script:
+    - cp "$ENV_FILE_CONTENT" .env
+    - docker compose down -v && docker compose up -d --build --wait

@@ -1,0 +1,649 @@
+{
+  "info": {
+    "_postman_id": "11684d10-91db-4672-9710-ef84bf9be730",
+    "name": "AtomSkills Backend API",
+    "description": "Postman коллекция для тестирования API приложения",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "49567066",
+    "_collection_link": "https://go.postman.co/collection/49567066-11684d10-91db-4672-9710-ef84bf9be730?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Users",
+      "item": [
+        {
+          "name": "Login",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"admin\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/users/login",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "users",
+                "login"
+              ]
+            },
+            "description": "Аутентификация пользователя. Возвращает cookie с токеном."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Current User",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/users/me",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "users",
+                "me"
+              ]
+            },
+            "description": "Получить информацию о текущем пользователе. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Find Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/users?name=Вадим",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "users"
+              ],
+              "query": [
+                {
+                  "key": "name",
+                  "value": "Вадим"
+                }
+              ]
+            },
+            "description": "Поиск пользователей по имени или табельному номеру. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/users/logout",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "users",
+                "logout"
+              ]
+            },
+            "description": "Выход из системы. Удаляет cookie с токеном."
+          },
+          "response": []
+        },
+        {
+          "name": "Import Users",
+          "request": {
+            "method": "GET",
+            "header": []
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Documents",
+      "item": [
+        {
+          "name": "Create Empty Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"name\": \"Новый документ\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/document",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document"
+              ]
+            },
+            "description": "Создать пустой документ. Возвращает ID и имя созданного документа. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Import Document",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "file",
+                  "type": "file",
+                  "value": null
+                },
+                {
+                  "key": "name",
+                  "value": "Загруженный документ",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/document",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document"
+              ]
+            },
+            "description": "Загрузить и создать документ из файла .docx. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Document Editor Config",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1"
+              ]
+            },
+            "description": "Получить конфигурацию редактора ONLYOFFICE для документа. Включает URL для скачивания, права редактирования и callback. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Document Versions",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/versions",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "versions"
+              ]
+            },
+            "description": "Получить список всех версий документа. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Documents by Type",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document?type=my_docs",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document"
+              ],
+              "query": [
+                {
+                  "key": "type",
+                  "value": "my_docs"
+                }
+              ]
+            },
+            "description": "Получить список документов текущего пользователя. Типы: public, my_docs, shared, to_be_approved. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Document Members",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/members",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "members"
+              ]
+            },
+            "description": "Получить список соавторов документа. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get Document Approvers",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/approvers",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "approvers"
+              ]
+            },
+            "description": "Получить список аппруверов для текущей версии документа. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Document Role",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/user_id",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "user_id"
+              ]
+            },
+            "description": "Получить роль указанного пользователя по отношению к документу. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Create New Version",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/version",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "version"
+              ]
+            },
+            "description": "Создать новую версию документа на основе последней. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Move Document to Approval",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"approve_method\": \"all\", \"approvers\": [\"user1\", \"user2\"]}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/move_to_approval",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "move_to_approval"
+              ]
+            },
+            "description": "Отправить документ на согласование. Указывается метод согласования и список аппруверов. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Approve/Reject Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"approved\": true, \"reason_for_refusal\": \"Нужны правки\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/approve",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "approve"
+              ]
+            },
+            "description": "Аппрувнуть или отклонить документ. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Share Document",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"user_id\": \"user1\", \"user_role\": \"reader\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/share",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "share"
+              ]
+            },
+            "description": "Поделиться документом с другим пользователем. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Update Document Member",
+          "request": {
+            "method": "PATCH",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"user_id\": \"user1\", \"user_role\": \"writer\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/share",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "share"
+              ]
+            },
+            "description": "Обновить роль пользователя в документе. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Unshare Document",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/share/user1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "share",
+                "user1"
+              ]
+            },
+            "description": "Удалить доступ пользователя к документу. Требует аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "Get or Create Shared Document",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/shared",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "shared"
+              ]
+            },
+            "description": "Получить или создать общий документ для совместного редактирования."
+          },
+          "response": []
+        },
+        {
+          "name": "Force Save Document",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/document/1/force-save",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "document",
+                "1",
+                "force-save"
+              ]
+            },
+            "description": "Принудительно отправить команду сохранения версии в ONLYOFFICE. Требует аутентификации."
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "ONLYOFFICE",
+      "item": [
+        {
+          "name": "Download Document for ONLYOFFICE",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:8000/api/onlyoffice/download/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "onlyoffice",
+                "download",
+                "1"
+              ]
+            },
+            "description": "Проксирует скачивание документа из S3 хранилища для ONLYOFFICE. Без аутентификации."
+          },
+          "response": []
+        },
+        {
+          "name": "ONLYOFFICE Callback",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\"status\": 2, \"url\": \"http://localhost:8082/urlToStorage/...\"}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:8000/api/onlyoffice/callback/1",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "8000",
+              "path": [
+                "api",
+                "onlyoffice",
+                "callback",
+                "1"
+              ]
+            },
+            "description": "Callback от ONLYOFFICE Document Server при изменении документа. Без аутентификации."
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}

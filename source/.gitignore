@@ -1,0 +1,11 @@
+.env
+.DS_Store
+
+backend/.venv/
+__pycache__/
+backend/*.pyc
+backend/.env
+backend/.env.*
+backend/*.log
+backend/.idea/
+.vscode/
